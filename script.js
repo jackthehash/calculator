@@ -91,21 +91,25 @@ add.addEventListener("click", () => {
     operator = "+";
     first = Number(screen.textContent);
     screen.textContent += "+";
+    dot.disabled = false;
 });
 sub.addEventListener("click", () => {
     operator = "-";
     first = Number(screen.textContent);
     screen.textContent += "-";
+    dot.disabled = false;
 });
 mul.addEventListener("click", () => {
     operator = "*";
     first = Number(screen.textContent);
     screen.textContent += "*";
+    dot.disabled = false;
 });
 div.addEventListener("click", () => {
     operator = "/";
     first = Number(screen.textContent);
     screen.textContent += "/";
+    dot.disabled = false;
 });
 equal.addEventListener("click", () => {
     operateCheck();
@@ -113,6 +117,7 @@ equal.addEventListener("click", () => {
     first = 0;
     second = 0;
     operator = "";
+    dot.disabled = false;
 });
 one.addEventListener("click", () => {
     numCheck();
@@ -157,4 +162,5 @@ zero.addEventListener("click", () => {
 dot.addEventListener("click", () => {
     numCheck();
     screen.textContent += ".";
+    dot.disabled = true;
 });
