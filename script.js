@@ -16,6 +16,7 @@ const div = document.querySelector("#divide");
 const mul = document.querySelector("#multiply");
 const equal = document.querySelector("#equal");
 const dot = document.querySelector("#dot");
+const del = document.querySelector("#back");
 
 screen.textContent = "";
 first = 0;
@@ -61,9 +62,9 @@ function clear() {
 };
 
 function numCheck() {
-    // if (screen.textContent.substr(-1) === "+" || screen.textContent.substr(-1) === "-" || screen.textContent.substr(-1) === "*" || screen.textContent.substr(-1) === "/") {
-    //     first = Number(screen.textContent.substr(0,screen.textContent.length - 2));
-    // }
+    if (screen.textContent.substr(-1) === "+" || screen.textContent.substr(-1) === "-" || screen.textContent.substr(-1) === "*" || screen.textContent.substr(-1) === "/") {
+        first = Number(screen.textContent.substr(0,screen.textContent.length - 1));
+    }
     if (screen.textContent.substr(0,1) === "=") {
         screen.textContent = "";
     };
@@ -89,25 +90,21 @@ function operateCheck() {
 clr.addEventListener("click", clear);
 add.addEventListener("click", () => {
     operator = "+";
-    first = Number(screen.textContent);
     screen.textContent += "+";
     dot.disabled = false;
 });
 sub.addEventListener("click", () => {
     operator = "-";
-    first = Number(screen.textContent);
     screen.textContent += "-";
     dot.disabled = false;
 });
 mul.addEventListener("click", () => {
     operator = "*";
-    first = Number(screen.textContent);
     screen.textContent += "*";
     dot.disabled = false;
 });
 div.addEventListener("click", () => {
     operator = "/";
-    first = Number(screen.textContent);
     screen.textContent += "/";
     dot.disabled = false;
 });
@@ -164,3 +161,117 @@ dot.addEventListener("click", () => {
     screen.textContent += ".";
     dot.disabled = true;
 });
+del.addEventListener("click", () => {
+    screen.textContent = screen.textContent.substr(0, screen.textContent.length - 1);
+    dot.disabled = false;
+})
+
+window.addEventListener(
+    "keydown", (event) => {
+        if (event.defaultPrevented) {
+        return;
+    }
+        
+    switch (event.key) {
+        case "1":
+            numCheck();
+            screen.textContent += "1";
+            break;
+
+        case "2":
+            numCheck();
+            screen.textContent += "2";
+            break;
+
+        case "3":
+            numCheck();
+            screen.textContent += "3";
+            break;
+        
+        case "4":
+            numCheck();
+            screen.textContent += "4";
+            break;
+        
+        case "5":
+            numCheck();
+            screen.textContent += "5";
+            break;
+
+        case "6":
+            numCheck();
+            screen.textContent += "6";
+            break;
+
+        case "7":
+            numCheck();
+            screen.textContent += "7";
+            break;
+        
+        case "8":
+            numCheck();
+            screen.textContent += "8";
+            break;
+
+        case "9":
+            numCheck();
+            screen.textContent += "9";
+            break;
+
+        case "0":
+            numCheck();
+            screen.textContent += "0";
+            break;
+
+        case "-":
+            operator = "-";
+            screen.textContent += "-";
+            dot.disabled = false;
+            break;
+        
+        case "+":
+            operator = "+";
+            screen.textContent += "+";
+            dot.disabled = false;
+            break;
+
+        case "*":
+            operator = "*";
+            screen.textContent += "*";
+            dot.disabled = false;
+            break;
+
+        case "/":
+            operator = "/";
+            screen.textContent += "/";
+            dot.disabled = false;
+            break;
+
+        case ".":
+            numCheck();
+            screen.textContent += ".";
+            dot.disabled = true;
+            break;
+
+        case "Enter":
+            operateCheck();
+            operate(operator);
+            first = 0;
+            second = 0;
+            operator = "";
+            dot.disabled = false;
+            break;
+
+        case "Backspace":
+            screen.textContent = screen.textContent.substr(0, screen.textContent.length - 1);
+            dot.disabled = false;
+            break;
+
+        default:
+            return;
+    }
+    event.preventDefault();
+    },
+    true,
+  );
+  

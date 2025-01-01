@@ -36,6 +36,11 @@ button {
     width: 330px;
 }
 
+.top {
+    display: flex;
+    gap: 10px;
+}
+
 .numPad {
     display: flex;
     flex-direction: column;
