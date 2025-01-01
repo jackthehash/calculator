@@ -7,6 +7,9 @@
     gap: 10px;
     width: 350px;
     height: 530px;
+    border-radius: 10px;
+    border: 1px solid black;
+    padding: 10px;
 }
 
 body {
@@ -22,11 +25,15 @@ button {
 }
 
 .screen {
-    height: 80px;
-    width: 350px;
     border-radius: 10px;
     border: 1px solid black;
-    font-size: 30px;
+    font-size: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 10px;
+    height: 80px;
+    width: 330px;
 }
 
 .numPad {
